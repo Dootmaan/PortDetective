@@ -23,7 +23,7 @@ public class ResultDisplayer extends JFrame {
   public ResultDisplayer() {
     setVisible(true);
     setTitle("É¨Ãè½á¹û");
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     setBounds(100, 100, 451, 542);
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

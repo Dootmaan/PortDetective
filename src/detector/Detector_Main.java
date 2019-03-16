@@ -32,10 +32,13 @@ public class Detector_Main extends JFrame {
   static JTextField textField_3;
   static JLabel label_2;
   
-  static private final int MAX_THREADS = 8; //定义线程数最大值
+  static int MAX_THREADS = 8; //定义线程数最大值
   static ExecutorService executorService;
   private JMenuBar menuBar;
   private final Action action = new SwingAction();
+  private final Action action_1 = new SwingAction_1();
+  private final Action action_2 = new SwingAction_2();
+  private final Action action_3 = new SwingAction_3();
 
   /**
    * Launch the application.
@@ -64,6 +67,21 @@ public class Detector_Main extends JFrame {
     
     menuBar = new JMenuBar();
     setJMenuBar(menuBar);
+    
+    JMenu menu_1 = new JMenu("\u9009\u9879");
+    menuBar.add(menu_1);
+    
+    JMenuItem menuItem_1 = new JMenuItem("\u8BBE\u7F6E");
+    menuItem_1.setAction(action_1);
+    menu_1.add(menuItem_1);
+    
+    JMenuItem menuItem_3 = new JMenuItem("\u5F53\u524D\u7EBF\u7A0B\u6570");
+    menuItem_3.setAction(action_3);
+    menu_1.add(menuItem_3);
+    
+    JMenuItem menuItem_2 = new JMenuItem("\u9000\u51FA");
+    menuItem_2.setAction(action_2);
+    menu_1.add(menuItem_2);
     
     JMenu menu = new JMenu("\u5173\u4E8E");
     menuBar.add(menu);
@@ -126,6 +144,7 @@ public class Detector_Main extends JFrame {
     btnNewButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
+        result.clear();
         // TODO Auto-generated method stub
         executorService = Executors.newFixedThreadPool(MAX_THREADS);
         Thread t = new Thread(new Scanner());
@@ -154,6 +173,34 @@ public class Detector_Main extends JFrame {
     }
     public void actionPerformed(ActionEvent e) {
       JOptionPane.showMessageDialog(contentPane, "PortDetective 2019(C)Dotman\n端口侦探 由Dotman开发");
+    }
+  }
+  private class SwingAction_1 extends AbstractAction {
+    public SwingAction_1() {
+      putValue(NAME, "高级设置");
+      putValue(SHORT_DESCRIPTION, "进阶选项，控制线程数");
+    }
+    public void actionPerformed(ActionEvent e) {
+      Settings settings = new Settings();
+      settings.setVisible(true);
+    }
+  }
+  private class SwingAction_2 extends AbstractAction {
+    public SwingAction_2() {
+      putValue(NAME, "退出");
+      putValue(SHORT_DESCRIPTION, "退出程序");
+    }
+    public void actionPerformed(ActionEvent e) {
+      System.exit(0);
+    }
+  }
+  private class SwingAction_3 extends AbstractAction {
+    public SwingAction_3() {
+      putValue(NAME, "当前线程数");
+      putValue(SHORT_DESCRIPTION, "查看当前线程数");
+    }
+    public void actionPerformed(ActionEvent e) {
+      JOptionPane.showMessageDialog(contentPane, "当前线程数："+Detector_Main.MAX_THREADS);
     }
   }
 }
