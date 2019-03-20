@@ -21,6 +21,7 @@ public class ResultDisplayer extends JFrame {
    * Create the frame.
    */
   public ResultDisplayer() {
+    setResizable(false);
     setVisible(true);
     setTitle("É¨Ãè½á¹û");
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);

@@ -31,6 +31,7 @@ public class Detector_Main extends JFrame {
   static JTextField textField_2;
   static JTextField textField_3;
   static JLabel label_2;
+  static boolean openPort_preview=true;
   
   static int MAX_THREADS = 8; //定义线程数最大值
   static ExecutorService executorService;
@@ -145,10 +146,15 @@ public class Detector_Main extends JFrame {
       @Override
       public void actionPerformed(ActionEvent e) {
         result.clear();
+        OpenPortDisplayer.openPort="";
         // TODO Auto-generated method stub
         executorService = Executors.newFixedThreadPool(MAX_THREADS);
         Thread t = new Thread(new Scanner());
         t.start();
+        
+        if(openPort_preview) {   //开启开放端口快速预览
+          JFrame frame=new OpenPortDisplayer();
+        }
       }
     });
     btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 20));

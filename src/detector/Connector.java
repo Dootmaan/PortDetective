@@ -18,14 +18,17 @@ public class Connector implements Runnable{
     // TODO Auto-generated method stub
     try {
       Socket socket = new Socket(address,port);
+      System.out.println("Open port found: "+address+":"+port);
+      OpenPortDisplayer.openPort+=address+":"+port+"\n";
+      OpenPortDisplayer.textArea.setText(OpenPortDisplayer.openPort);
     } catch (UnknownHostException e) {
       // TODO Auto-generated catch block
       Detector_Main.result.replace(address+":"+port,-1);
-      e.printStackTrace();
+//      e.printStackTrace();
     } catch (IOException e) {
       // TODO Auto-generated catch block
       Detector_Main.result.replace(address+":"+port, -2);
-      e.printStackTrace();
+//      e.printStackTrace();
     }
   }
   

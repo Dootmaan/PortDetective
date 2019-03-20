@@ -41,28 +41,63 @@ public class Settings extends JFrame {
   public Settings() {
     setTitle("∏ﬂº∂…Ë÷√");
     setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-    setBounds(100, 100, 450, 300);
+    setBounds(100, 100, 451, 388);
     contentPane = new JPanel();
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
     contentPane.setLayout(null);
 
     JLabel label = new JLabel("\u7EBF\u7A0B\u6570\u91CF\uFF1A");
-    label.setBounds(106, 120, 82, 18);
+    label.setBounds(107, 191, 82, 18);
     contentPane.add(label);
 
     textField = new JTextField();
-    textField.setBounds(217, 117, 106, 24);
+    textField.setBounds(218, 188, 106, 24);
     contentPane.add(textField);
     textField.setColumns(10);
 
     JRadioButton radioButton = new JRadioButton("\u662F");
-    radioButton.setBounds(215, 53, 43, 27);
+    radioButton.setBounds(216, 124, 43, 27);
     contentPane.add(radioButton);
 
     JRadioButton radioButton_1 = new JRadioButton("\u5426");
-    radioButton_1.setBounds(265, 53, 43, 27);
+    radioButton_1.setBounds(266, 124, 43, 27);
     contentPane.add(radioButton_1);
+    
+    JRadioButton radioButton_2 = new JRadioButton("\u5F00");
+    radioButton_2.setBounds(218, 60, 43, 27);
+    contentPane.add(radioButton_2);
+    
+    JRadioButton radioButton_3 = new JRadioButton("\u5173");
+    radioButton_3.setBounds(266, 60, 43, 27);
+    contentPane.add(radioButton_3);
+
+    ButtonGroup bg_2 = new ButtonGroup();
+    bg_2.add(radioButton_2);
+    bg_2.add(radioButton_3);
+    if(Detector_Main.openPort_preview) {
+      radioButton_2.setSelected(true);
+    }else {
+      radioButton_3.setSelected(true);
+    }
+    
+    radioButton_2.addActionListener(new ActionListener() {
+      
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        Detector_Main.openPort_preview=true;
+      }
+    });
+    
+    radioButton_3.addActionListener(new ActionListener() {
+      
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        Detector_Main.openPort_preview=false;
+      }
+    });
 
     ButtonGroup bg = new ButtonGroup();
     bg.add(radioButton);
@@ -97,7 +132,7 @@ public class Settings extends JFrame {
         }
       }
     });
-    button.setBounds(75, 183, 113, 27);
+    button.setBounds(76, 254, 113, 27);
     contentPane.add(button);
 
     JButton button_1 = new JButton("\u53D6\u6D88");
@@ -107,12 +142,16 @@ public class Settings extends JFrame {
         setVisible(false);
       }
     });
-    button_1.setBounds(247, 183, 113, 27);
+    button_1.setBounds(248, 254, 113, 27);
     contentPane.add(button_1);
 
     JLabel label_1 = new JLabel("\u542F\u7528\u591A\u7EBF\u7A0B\uFF1F");
-    label_1.setBounds(106, 57, 106, 18);
+    label_1.setBounds(107, 128, 106, 18);
     contentPane.add(label_1);
-
+    
+    JLabel label_2 = new JLabel("\u5F00\u653E\u7AEF\u53E3\u9884\u89C8\uFF1A");
+    label_2.setBounds(107, 64, 106, 18);
+    contentPane.add(label_2);
+    
   }
 }
